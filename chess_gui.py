@@ -7,7 +7,7 @@
 #
 import chess_engine
 import pygame as py
-
+import logging
 import ai_engine
 from enums import Player
 
@@ -86,6 +86,8 @@ def highlight_square(screen, game_state, valid_moves, square_selected):
 
 
 def main():
+    logging.basicConfig(format='[%(levelname)s] - <%(asctime)s> : %(message)s', datefmt='%d-%m-%y %H:%M:%S',
+                        level=logging.INFO)
     # Check for the number of players and the color of the AI
     human_player = ""
     while True:
