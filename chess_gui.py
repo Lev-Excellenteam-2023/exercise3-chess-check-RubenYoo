@@ -165,7 +165,13 @@ def main():
                     else:
                         valid_moves = game_state.get_valid_moves((row, col))
                         if valid_moves is None:
-                            valid_moves = []
+                           valid_moves = []
+                    
+                    if game_state.is_turn_changed:
+                        logging.info(f"Chess count: {game_state.checks_count}")
+                        logging.info(f"Knight moves: {game_state.knight_moves}")
+                        logging.info(f"White pieces survived: {game_state.white_moves}")
+                        logging.info(f"Black pieces survived: {game_state.black_moves}")
             elif e.type == py.KEYDOWN:
                 if e.key == py.K_r:
                     game_over = False
@@ -179,6 +185,7 @@ def main():
                     print(len(game_state.move_log))
 
         draw_game_state(screen, game_state, valid_moves, square_selected)
+
 
         endgame = game_state.checkmate_stalemate_checker()
         if endgame == 0:

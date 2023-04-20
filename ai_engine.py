@@ -43,6 +43,8 @@ class chess_ai:
                 game_state.move_piece(move_pair[0], move_pair[1], True)
                 evaluation = self.minimax_white(game_state, depth - 1, alpha, beta, False, "white")
                 game_state.undo_move()
+                #game_state._white_moves = game_state._white_moves - 1
+                #game_state._black_moves = game_state._black_moves - 1
 
                 if max_evaluation < evaluation:
                     max_evaluation = evaluation
@@ -61,6 +63,8 @@ class chess_ai:
                 game_state.move_piece(move_pair[0], move_pair[1], True)
                 evaluation = self.minimax_white(game_state, depth - 1, alpha, beta, True, "black")
                 game_state.undo_move()
+                #game_state._black_moves = game_state._black_moves - 1
+                #game_state._white_moves = game_state._white_moves - 1
 
                 if min_evaluation > evaluation:
                     min_evaluation = evaluation
@@ -100,6 +104,8 @@ class chess_ai:
                 game_state.move_piece(move_pair[0], move_pair[1], True)
                 evaluation = self.minimax_black(game_state, depth - 1, alpha, beta, False, "black")
                 game_state.undo_move()
+                #game_state._white_moves = game_state._white_moves - 1
+                #game_state._black_moves = game_state._black_moves - 1
 
                 if max_evaluation < evaluation:
                     max_evaluation = evaluation
@@ -118,6 +124,8 @@ class chess_ai:
                 game_state.move_piece(move_pair[0], move_pair[1], True)
                 evaluation = self.minimax_black(game_state, depth - 1, alpha, beta, True, "white")
                 game_state.undo_move()
+                #game_state._black_moves = game_state._black_moves - 1
+                #game_state._white_moves = game_state._white_moves - 1
 
                 if min_evaluation > evaluation:
                     min_evaluation = evaluation
