@@ -3,7 +3,7 @@ import chess_engine
 
 def test_fool_s_mate():
     """
-    System test
+    System test to test the fastest way to win a game
     """
 
     # configuring the game_state
@@ -17,6 +17,6 @@ def test_fool_s_mate():
 
     expected_result = 0
     result = my_game_state.checkmate_stalemate_checker()
-    
+
     # T01 - is white lost ?
     assert result == expected_result
