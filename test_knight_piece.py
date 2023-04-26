@@ -126,3 +126,46 @@ def test_knight_get_valid_piece_takes():
     result = my_game_state.white_pieces[0].get_valid_piece_takes(my_game_state)
     expected_result = [(1, 3), (1, 5), (2, 2), (2, 6)]
     assert result == expected_result
+
+
+def test_knight_get_valid_piece_moves():
+    """
+    Integration test for the get_valid_piece_moves method of the Knight class
+    """
+
+    # Configuring a mock for the Knight piece and the game_state
+    mock_game_state = MagicMock(spec=chess_engine.game_state())
+    mock_knight_piece = Piece.Knight('k', 3, 4, chess_engine.Player.PLAYER_1)
+
+    # set a return value for the get_valid_piece_takes
+    mock_get_valid_piece_takes = MagicMock()
+    mock_get_valid_piece_takes.return_value = [(1, 3), (1, 5), (2, 2), (2, 6), (4, 2)]
+
+    # set a return value for the get_valid_peaceful_moves
+    mock_get_valid_peaceful_moves = MagicMock()
+    mock_get_valid_peaceful_moves.return_value = [(4, 6), (5, 5), (5, 3)]
+
+    # set the patch
+    with patch.object(mock_knight_piece, 'get_valid_piece_takes', mock_get_valid_piece_takes), \
+            patch.object(mock_knight_piece, 'get_valid_peaceful_moves', mock_get_valid_peaceful_moves):
+
+        expected_result = [(4, 6), (5, 5), (5, 3), (1, 3), (1, 5), (2, 2), (2, 6), (4, 2)]
+        result = mock_knight_piece.get_valid_piece_moves(mock_game_state)
+
+        # T01 - basic get_valid_piece_moves test
+        assert expected_result == result
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
