@@ -154,18 +154,3 @@ def test_knight_get_valid_piece_moves():
 
         # T01 - basic get_valid_piece_moves test
         assert expected_result == result
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
